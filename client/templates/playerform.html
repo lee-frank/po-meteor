@@ -1,0 +1,112 @@
+<template name="playerform">
+
+  {{#if player}}
+    {{>profilecard}}
+
+    <div class="row">
+      <div class="col s12 center-align">
+          <a class="btn edit">Edit Info</a>
+          <a class="btn logout">Logout</a>
+      </div>
+    </div>
+
+
+  {{else}}
+    <div class="card grey lighten-3">
+      <div class="card-content black-text">
+        <div class="row">
+          <div class="col s12">
+            <span class="heading">Get listed as Online.</span>
+          </div>
+        </div>
+
+        <form> <!-- you need to update card appearance if logged in -->
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="name" name="name" type="text" placeholder="MojoJJ" required maxlength="12" minlength="3">
+              <label class="active" for="name">Your BattleTag</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="bnetid" name="bnetid" type="number" placeholder="153" max="10000" required>
+              <label class="active" for="bnetid">Your ID #</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <!-- <label>Race</label> -->
+              <select class="browser-default" required name="race" id="race">
+                <option value="" disabled selected>Select Your Race</option>
+                <option value="random">Random</option>
+                <option value="protoss">Protoss</option>
+                <option value="terran">Terran</option>
+                <option value="zerg">Zerg</option>
+              </select>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col s12 center-align">
+                <input type="submit" class="waves-effect waves-light btn amber" value="Go Online">
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  {{/if}}
+
+  <!-- Modal Structure -->
+  <div id="modalEdit" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Update Your Info</h4>
+       <form>
+        <div class="row">
+        <div class="input-field col s6">
+          <input id="name" name="name" type="text" value="{{player.name}}" required maxlength="12" minlength="3">
+          <label class="active" for="name">BNet Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="bnetid" name="bnetid" type="number" value="{{player.bnetid}}"  max="10000" required>
+          <label class="active" for="bnetid">BNet ID #</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <label class="active select-label">Your Race</label>
+          <select class="browser-default" name="race" required>
+            <option value="" disabled selected>Select Your Race</option>
+            <option value="random">Random</option>            
+            <option value="zerg">Zerg</option>
+            <option value="terran">Terran</option>
+            <option value="protoss">Protoss</option>
+          </select>
+
+        </div>
+        <div class="input-field col s6">
+          <label class="active select-label">Your Highest Rank</label>
+          <select class="browser-default" name="rank" required>
+            <option value="" disabled selected>Select Your League</option>
+            <option value="Rank Unknown">Rank Unknown</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Master">Master</option>
+            <option value="Grandmaster">Grandmaster</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="text" value="{{player.description}}" class="materialize-textarea" length="120" maxlength="120" name="description"></textarea>
+          <label class="active" for="text">Tell us something about yourself</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <input id="update" class="modal-action modal-close waves-effect waves-green btn-flat" value="Update">
+      </div>
+       </form>
+    </div>
+  </div>
+</template>
