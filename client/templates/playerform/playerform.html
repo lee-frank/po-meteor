@@ -66,26 +66,26 @@
         <div class="input-field col s6">
           <label class="active select-label">Your Race</label>
           <select class="browser-default" name="race" required>
-            <option value="" disabled selected>Select Your Race</option>
-            <option value="random">Random</option>            
-            <option value="zerg">Zerg</option>
-            <option value="terran">Terran</option>
-            <option value="protoss">Protoss</option>
+            <option value="" disabled>Select Your Race</option>
+            <option value="random" {{selectRace "random"}}>Random</option>            
+            <option value="zerg" {{selectRace "zerg"}}>Zerg</option>
+            <option value="terran" {{selectRace "terran"}}>Terran</option>
+            <option value="protoss" {{selectRace "protoss"}}>Protoss</option>
           </select>
 
         </div>
         <div class="input-field col s6">
           <label class="active select-label">Your Highest Rank</label>
           <select class="browser-default" name="rank" required>
-            <option value="" disabled selected>Select Your League</option>
+            <option value="" disabled>Select Your League</option>
             <option value="Rank Unknown">Rank Unknown</option>
-            <option value="Bronze">Bronze</option>
-            <option value="Silver">Silver</option>
-            <option value="Gold">Gold</option>
-            <option value="Platinum">Platinum</option>
-            <option value="Diamond">Diamond</option>
-            <option value="Master">Master</option>
-            <option value="Grandmaster">Grandmaster</option>
+            <option value="bronze" {{selectRank "bronze"}}>Bronze</option>
+            <option value="silver" {{selectRank "silver"}}>Silver</option>
+            <option value="gold" {{selectRank "gold"}}>Gold</option>
+            <option value="platinum" {{selectRank "platinum"}}>Platinum</option>
+            <option value="diamond" {{selectRank "diamond"}}>Diamond</option>
+            <option value="master" {{selectRank "master"}}>Master</option>
+            <option value="grandmaster" {{selectRank "grandmaster"}}>Grandmaster</option>
           </select>
         </div>
       </div>

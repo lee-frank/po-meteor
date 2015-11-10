@@ -19,7 +19,6 @@ Template.playerform.events({
 	    });
 
 	    if (playerExists) {
-	    	console.log("Playerfound!");
 	    	Session.setPersistent('playeridSession',playerExists._id);
 
    			Materialize.toast('Existing ID found', 4000);
@@ -102,6 +101,18 @@ Template.playerform.helpers({
 		var playerSession = Session.get('playeridSession');
 
         return PlayersList.findOne({_id:playerSession});
+    },
+    'selectRace': function(race){  //set default selected for race when editing
+    	var playerSession = Session.get('playeridSession');
+    	var player = PlayersList.findOne({_id:playerSession});
+
+		return (race == player.race) ? 'selected' : '';
+    },
+    'selectRank': function(rank){  //set default selected for race when editing
+    	var playerSession = Session.get('playeridSession');
+    	var player = PlayersList.findOne({_id:playerSession});
+
+		return (rank == player.rank) ? 'selected' : '';
     }
 });
 
