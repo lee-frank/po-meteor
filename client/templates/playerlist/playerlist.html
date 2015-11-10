@@ -2,7 +2,7 @@
 
 <section class="player-list">
  <div class="container">
- 
+
     <div class="row">
       <div class="col s12">
         <h5>Online Now:</h5>
@@ -28,7 +28,9 @@
     <div class="row">
       <div class="col s12">
         <div class="flex">
+        {{#each findCard}}
         	{{> playercard}}
+        {{/each}}
         </div>
       </div>
     </div>

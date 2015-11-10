@@ -108,7 +108,7 @@ Template.playerform.helpers({
 
 		return (race == player.race) ? 'selected' : '';
     },
-    'selectRank': function(rank){  //set default selected for race when editing
+    'selectRank': function(rank){  //set default selected for rank when editing
     	var playerSession = Session.get('playeridSession');
     	var player = PlayersList.findOne({_id:playerSession});
 
