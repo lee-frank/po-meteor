@@ -1,0 +1,50 @@
+@import "../../../lib/stylesheets/_colors.scss";
+
+nav {
+  background-color: $primary-color;
+}
+
+navigation {
+  a.brand-logo {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .brand-logo .full {
+    display:none;
+  }
+
+  .brand-logo  .small {
+    display:block;
+  }
+
+  .brand-logo > img {
+    max-height: 36px;
+    width: auto;
+  }
+
+  .side-nav {
+    font-weight: 500;
+  }
+
+  li.side-nav-brand {
+    border-bottom: 1px solid #ddd;
+    height: 150px;
+    text-align: center;
+    background-color: $primary-color;
+  }
+
+  li.side-nav-brand:hover {
+    background-color: $primary-color;
+  }
+
+  @media (min-width: 600px) {
+    .brand-logo .full {
+      display: block
+    }
+    .brand-logo .small {
+      display: none;
+    }
+  }
+}

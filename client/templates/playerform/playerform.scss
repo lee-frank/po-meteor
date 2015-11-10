@@ -1,0 +1,11 @@
+@import "../../../lib/stylesheets/_colors.scss";
+
+.modal.bottom-sheet{
+  max-height: 55%;
+}
+
+playerForm .select-label.active {
+  position: absolute;
+  top: 0px;
+}
+

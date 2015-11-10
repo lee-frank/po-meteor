@@ -1,16 +1,9 @@
 <template name="playerform">
 
   {{#if player}}
-    {{>profilecard}}
 
-    <div class="row">
-      <div class="col s12 center-align">
-          <a class="btn edit">Edit Info</a>
-          <a class="btn logout">Logout</a>
-      </div>
-    </div>
-
-
+      {{>profilecard}}
+          
   {{else}}
     <div class="card grey lighten-3">
       <div class="card-content black-text">
@@ -20,7 +13,7 @@
           </div>
         </div>
 
-        <form> <!-- you need to update card appearance if logged in -->
+        <form name="playerForm"> <!-- you need to update card appearance if logged in -->
           <div class="row">
             <div class="input-field col s6">
               <input id="name" name="name" type="text" placeholder="MojoJJ" required maxlength="12" minlength="3">
@@ -103,8 +96,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-        <input id="update" class="modal-action modal-close waves-effect waves-green btn-flat" value="Update">
+        
+          <a href="#" input id="delete" class="modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
+          <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+          <a href="#" input id="update" class="modal-action modal-close waves-effect waves-green btn-flat">Update</a>
+        
       </div>
        </form>
     </div>

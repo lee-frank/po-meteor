@@ -1,0 +1,103 @@
+@import "../../../lib/stylesheets/_colors.scss";
+
+.player-card {
+  flex: 0 1 auto;
+  width: 100%
+}
+
+@media(min-width: 768px){
+  .player-card {
+    flex: 0 1 31%;
+    width: auto;
+  }
+}
+
+// On mobile devices, card heights can be dynamic
+@media(min-width: 768px){
+  .player-card.card {
+    height: 220px;
+  }
+}
+
+.player-card .card-title {
+  color: $text-color-primary;
+  font-weight: 600;
+}
+
+
+.player-card a.profile-url{
+  color: $text-color-primary;
+}
+
+// .player-card p {
+//   height: 250px;
+// }
+
+.player-card.Zerg,
+.player-card.zerg {
+  background-color: color("purple", "lighten-2");
+}
+
+.player-card.Protoss,
+.player-card.protoss {
+  background-color: color("amber", "lighten-2");
+}
+
+.player-card.Terran,
+.player-card.terran {
+  background-color: color("red", "lighten-2");
+}
+
+.player-card.Random,
+.player-card.random {
+  background-color: color("blue", "lighten-4");
+}
+
+.player-card .status {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player-card .title {
+  flex: 0 1 auto;
+  font-size: 18px;
+  font-weight: 600;
+  color: $text-color-primary;
+}
+
+.player-card .online {
+  flex: 0 1 auto;
+  text-align: right;
+  color: color('green', 'accent-4');
+}
+
+.player-card .player-badges {
+  display: block;
+  color: lighten($text-color-primary, 10%);
+  font-weight: 600;
+}
+
+.player-card .player-badges .race,
+.player-card .player-badges .league {
+  // display: block;
+  // color: $text-color-primary;
+  // font-weight: 600;
+  text-transform: capitalize;
+  // margin-right: 2px;
+}
+
+.player-card p.text {
+  margin-top: 5px;
+  color: lighten($text-color-primary, 15%);
+  font-size: 14px;
+}
+
+.player-card .card-action a {
+  color: color("grey", "darken-1");
+}
+
+.player-card.self {
+  height: auto;
+}
