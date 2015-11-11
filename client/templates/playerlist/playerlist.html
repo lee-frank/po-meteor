@@ -8,29 +8,29 @@
         <h5>Online Now:</h5>
 
         <ul class="tabs z-depth-1">
-           <li class="tab col s3"><a class="active" href="#" ng-click="ctrl.filterPlayers('all')">All</a></li>
-           <li class="tab col s3"><a href="#" ng-click="ctrl.filterPlayers('protoss')">
+           <li class="tab col s3" value="All"><a class="active" href="#" id="filter">All</a></li>
+           <li class="tab col s3"><a href="#" id="filter">
              <span class="race-name">Protoss</span><span class="race-name-small">Toss</span></a>
            </li>
-           <li class="tab col s3"><a href="#" ng-click="ctrl.filterPlayers('terran')">
+           <li class="tab col s3"><a href="#">
              <span class="race-name">Terran</span><span class="race-name-small">Ter</span></a>
            </li>
-           <li class="tab col s3"><a href="#" ng-click="ctrl.filterPlayers('zerg')">
+           <li class="tab col s3"><a href="#">
              <span class="race-name">Zerg</span><span class="race-name-small">Zer</span></a>
            </li>
-           <li class="tab col s3"><a href="#" ng-click="ctrl.filterPlayers('random')">
+           <li class="tab col s3"><a href="#R">
              <span class="race-name">Random</span><span class="race-name-small">Rand</span></a>
            </li>
-         </ul>
+        </ul>
       </div>
     </div>
    
     <div class="row">
       <div class="col s12">
         <div class="flex">
-        {{#each findCard}}
-        	{{> playercard}}
-        {{/each}}
+          {{#each findCard}}
+          	{{> playercard}}
+          {{/each}}
         </div>
       </div>
     </div>

@@ -25,12 +25,12 @@ Template.playerform.events({
 	    }
 	    else {
 		    PlayersList.insert({
-	        name: name,
-	        bnetid: bnetid,
-	        race: race,
-	        rank: "Unknown Rank",
-	        description: "I'm a fun and honest " + race + " looking for another funny, kind, and honest " + race +" to make sweet Archon Mode magic with.",
-	        createdAt: new Date()
+		        name: name,
+		        bnetid: bnetid,
+		        race: race,
+		        rank: "Unknown Rank",
+		        description: "I'm a fun and honest " + race + " looking for another funny, kind, and honest " + race +" to make sweet Archon Mode magic with.",
+		        createdAt: new Date()
 			}, function(error){
 				if(error){
 			      console.log(error.reason); // Output error if submission fails
@@ -60,38 +60,6 @@ Template.playerform.events({
   	},
   	'click .edit': function(){
   		$('#modalEdit').openModal();
-  	},
-  	'click #update': function(){
-  		//get playersession
-  		var playerSession = Session.get('playeridSession');
-
-  		//pull values from fields
-	    var name = $('[name="name"]').val();
-	    var bnetid = $('[name="bnetid"]').val();
-	    var description = $('[name="description"]').val();
-	    var race = $('[name="race"]').val();
-	    var rank = $('[name="rank"]').val();
-
-	    //Update record
-  		PlayersList.update({_id: playerSession}, {$set: {
-  				name: name,
-  				bnetid: bnetid,
-  				description: description,
-  				race: race,
-  				rank: rank
-  			}
-  		});
-
-  		Materialize.toast('Your info has been updated', 4000);
-  	},
-  	'click #delete': function(){
-  		var playerSession = Session.get('playeridSession');
-
-  		//Delete record from collection and clear session 
-  		PlayersList.remove({_id: playerSession});
-  		Session.clear('playeridSession')
-
-  		Materialize.toast('Player card deleted', 4000);
   	}
 });
 
@@ -101,18 +69,6 @@ Template.playerform.helpers({
 		var playerSession = Session.get('playeridSession');
 
         return PlayersList.findOne({_id:playerSession});
-    },
-    'selectRace': function(race){  //set default selected for race when editing
-    	var playerSession = Session.get('playeridSession');
-    	var player = PlayersList.findOne({_id:playerSession});
-
-		return (race == player.race) ? 'selected' : '';
-    },
-    'selectRank': function(rank){  //set default selected for rank when editing
-    	var playerSession = Session.get('playeridSession');
-    	var player = PlayersList.findOne({_id:playerSession});
-
-		return (rank == player.rank) ? 'selected' : '';
     }
 });
 
