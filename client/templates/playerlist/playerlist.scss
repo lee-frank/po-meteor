@@ -5,18 +5,18 @@
 }
 
 // Shorten the race names in tab on small screens
-.player-list .race-name-small{
+.player-list .race-name-small.race-selector{
   display: block;
 }
-.player-list .race-name{
+.player-list .race-name.race-selector{
   display: none;
 }
 
 @media (min-width:500px){
-  .player-list .race-name-small{
+  .player-list .race-name-small.race-selector{
     display: none;
   }
-  .player-list .race-name{
+  .player-list .race-name.race-selector{ 
     display: block;
   }
 }

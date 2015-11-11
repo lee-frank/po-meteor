@@ -49,10 +49,6 @@ Template.playerform.events({
 			    }
 			});
 	    }
-	    
-	    console.log(name);
-	    console.log(bnetid);
-	    console.log(race);
 	},
 	'click .logout': function(){
 		Session.clear('playeridSession')

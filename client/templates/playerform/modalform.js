@@ -1,6 +1,6 @@
 //initialize jquery plugins
 Template.modalform.onRendered(function() {
-    $('textarea#text').characterCounter();
+    $('textarea#text').characterCounter(); 
 });
 
 //Events
@@ -41,10 +41,10 @@ Template.modalform.events({
 
 //Helpers
 Template.modalform.helpers({
-	'player': function(){
+	 'player': function(){
 		var playerSession = Session.get('playeridSession');
 
-        return PlayersList.findOne({_id:playerSession});
+    return playerSession && PlayersList.findOne({_id:playerSession});
     },
     'selectRace': function(race){  //set default selected for race when editing
 		var playerSession = Session.get('playeridSession');
@@ -56,7 +56,7 @@ Template.modalform.helpers({
     	var player = PlayersList.findOne({_id:playerSession});
     	
     	//meteor guard (checked playerSession exists)
-		return playerSession && (rank == player.rank) ? 'selected' : '';
+		  return playerSession && (rank == player.rank) ? 'selected' : '';
     }
 });
 
