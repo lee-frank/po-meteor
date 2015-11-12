@@ -22,3 +22,4 @@ iron:router
 fourseven:scss
 poetic:materialize-scss
 u2622:persistent-session
+momentjs:moment
