@@ -10,7 +10,7 @@ Template.playerlist.events({
 })
 
 Template.playerlist.helpers({
-    'findCard': function(){
+    'filterCards': function(){
     	Session.setDefault('racefilter', "All"); //Only runs if no session exists
 
 		var race = Session.get('racefilter');

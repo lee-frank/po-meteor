@@ -1,13 +1,13 @@
 //initialize jquery plugins
-Template.modalform.onRendered(function() {
-    $('textarea#text').characterCounter(); 
-});
+// Template.modalform.onRendered(function() {
+//     $('textarea#text').characterCounter(); 
+// });
 
 //Events
 Template.modalform.events({
   	'click #update': function(){
   		//get playersession
-  		var playerSession = Session.get('playeridSession');
+  		var playerid = Session.get('playeridSession');
 
   		//pull values from fields
 	    var name = $('[name="name"]').val();
@@ -17,46 +17,44 @@ Template.modalform.events({
 	    var rank = $('[name="rank"]').val();
 
 	    //Update record
-  		PlayersList.update({_id: playerSession}, {$set: {
-  				name: name,
-  				bnetid: bnetid,
-  				description: description,
-  				race: race,
-  				rank: rank
-  			}
-  		});
-
-  		Materialize.toast('Your info has been updated', 4000);
+      Meteor.call('updatePlayer',playerid,name,bnetid,description,race,rank, function(err, data) {
+        if (err) {
+            console.log(err);
+        } 
+          Materialize.toast('Your info has been updated', 4000);
+      });
   	},
   	'click #delete': function(){
-  		var playerSession = Session.get('playeridSession');
+  		var playerid = Session.get('playeridSession');
 
   		//Delete record from collection and clear session 
-  		PlayersList.remove({_id: playerSession});
-  		Session.clear('playeridSession')
-
-  		Materialize.toast('Player card deleted', 4000);
+  		Meteor.call('removePlayer',playerid, function(err, data) {
+        if (err) {
+            console.log(err);
+        } 
+        Session.clear('playeridSession')
+        Materialize.toast('Player card deleted', 4000);
+      });
   	}
 });
 
 //Helpers
 Template.modalform.helpers({
 	 'player': function(){
-		var playerSession = Session.get('playeridSession');
-
-    return playerSession && PlayersList.findOne({_id:playerSession});
+  		var playerid = Session.get('playeridSession');
+      return playerid && PlayersList.findOne({_id:playerid});
     },
     'selectRace': function(race){  //set default selected for race when editing
-		var playerSession = Session.get('playeridSession');
-		var player = PlayersList.findOne({_id:playerSession});
-		return playerSession && (race == player.race) ? 'selected' : '';
+  		var playerid = Session.get('playeridSession');
+  		var player = PlayersList.findOne({_id:playerid});
+  		return playerid && (race == player.race) ? 'selected' : '';
     },
     'selectRank': function(rank){  //set default selected for rank when editing
-    	var playerSession = Session.get('playeridSession');
-    	var player = PlayersList.findOne({_id:playerSession});
+    	var playerid = Session.get('playeridSession');
+    	var player = PlayersList.findOne({_id:playerid});
     	
-    	//meteor guard (checked playerSession exists)
-		  return playerSession && (rank == player.rank) ? 'selected' : '';
+    	//meteor guard (checked playerid exists)
+		  return playerid && (rank == player.rank) ? 'selected' : '';
     }
 });
 

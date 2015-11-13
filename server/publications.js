@@ -1,3 +1,3 @@
-Meteor.publish('players', function() { 
+Meteor.publish('thePlayers', function() { 
 	return PlayersList.find({});
 });
