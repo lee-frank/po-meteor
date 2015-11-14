@@ -5,9 +5,6 @@ Meteor.methods({
 			loginDate: new Date()
 			}
 		});
-
-		// Set the presence of the inserted user
-		Meteor.call('setPresence', playerid, 'online');
 	},
 
 	'insertNewUser': function(name,bnetid,race) {
@@ -20,8 +17,5 @@ Meteor.methods({
         createdAt: new Date(),
         loginDate: new Date()
 		});
-
-		// Set the presence of the inserted user
-		Meteor.call('setPresence', results, 'online');
 	}
 });

@@ -1,5 +1,8 @@
 Meteor.autorun(function(){
-  if (Meteor.status().connected){
-    Session.set('online', true);
+  // Check if session still exists
+  var playerSession = Session.get('playeridSession');
+  if (playerSession) {
+    Meteor.call('setPresence', playerSession, 'online');
+    Meteor.subscribe('presence', playerSession);
   }
 });
