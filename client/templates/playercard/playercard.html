@@ -1,8 +1,7 @@
 <template name="playercard">
-    
+
       <div class="card player-card {{race}}">
         <div class="card-content">
-          <!-- <span class="card-title" ng-if="ctrl.self === 'true'">You Are Logged In As</span> -->
           <div class="status">
             <span class="title" title="click to view battle.net profile">
               <a class="profile-url">
@@ -11,20 +10,17 @@
                 <span>{{bnetid}}</span>
               </a>
             </span>
+            {{#if isOnline}}
               <span class="online" title="This player is online"><i class="material-icons">power_settings_new</i></span>
+            {{/if}}
           </div>
           <span class="player-badges">
-            <span class="race">{{race}}</span> - 
+            <span class="race">{{race}}</span> -
             <span class="league">{{rank}}</span>
           </span>
           <p class="text">{{description}}</p>
           <p class="last-login text">last active: {{formatTime loginDate}}</p>
         </div>
       </div>
-    
+
 </template>
-
-
-
-
-

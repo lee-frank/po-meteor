@@ -20,8 +20,8 @@ Template.playerform.events({
 
 	    if (playerExists) {
 	    	Session.setPersistent('playeridSession',playerExists._id);
-	    	var playerSession = Session.get('playeridSession'); 
-   			
+	    	var playerSession = Session.get('playeridSession');
+
 	   		//Update last login and race
 	   		Meteor.call('updateRace', playerSession, race);
 
@@ -31,16 +31,17 @@ Template.playerform.events({
 			Meteor.call('insertNewUser', name, bnetid, race, function(err, data) {
 				if (err) {
 				    console.log(err);
-	   			}	
+	   			}
 				var playerid = PlayersList.findOne({name:name,bnetid:bnetid});
-				
-				//set persistent session of user	
+
+				//set persistent session of user
 	    		Session.setPersistent('playeridSession',playerid._id);
 	    		Materialize.toast('Player card entered', 4000);
 			});
 		}
 	},
 	'click .logout': function(){
+    Meteor.call('setPresence', Session.get('playeridSession'), 'loggedOut');
 		Session.clear('playeridSession');
 		Materialize.toast('Logged out', 4000);
   	},
@@ -57,11 +58,3 @@ Template.playerform.helpers({
         return PlayersList.findOne({_id:playerSession});
     }
 });
-
-
-
-
-
-
-
-
