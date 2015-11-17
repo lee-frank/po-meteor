@@ -24,7 +24,6 @@ Template.playerform.events({
    			
 	   		//Update last login and race
 	   		Meteor.call('updateRace', playerSession, race);
-
 	  		Materialize.toast('Existing ID found', 4000);
 	    } else {
 	    	//insert new user
