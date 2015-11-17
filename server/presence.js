@@ -8,7 +8,8 @@ Meteor.publish('presence', function(playerId){
     console.log("Stopping connection to ", playerId);
     Meteor.call('setPresence', playerId, 'offline');
   });
-
+  
+  //What is this used for?
   return AuthLog.findOne({ _id: playerId }, { sort: { timestamp: - 1 } });
 })
 
