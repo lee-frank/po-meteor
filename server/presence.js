@@ -9,13 +9,13 @@ Meteor.publish('presence', function(playerId){
     Meteor.call('setPresence', playerId, 'offline');
   });
 
-	return AuthLog.findOne({ _id: playerId }, { sort: { timestamp: - 1 } });
+  return AuthLog.findOne({ _id: playerId }, { sort: { timestamp: - 1 } });
 })
-
 
 Meteor.methods({
   // Update the player card and set status. Then record the transaction in
   // a separate log
+
   setPresence: function(playerId, status) {
     PlayersList.update({ _id: playerId }, {
       $set: {
@@ -27,4 +27,5 @@ Meteor.methods({
       AuthLog.insert({ playerId: playerId, status: status, timestamp: new Date() });
     });
   }
+  
 });

@@ -16,14 +16,14 @@ Template.playerform.events({
     var race = $('[name="race"]').val();
 
     //Find out if it's an existing player
-		var playerExists = PlayersList.findOne({name:name,bnetid:bnetid});
+	var playerExists = PlayersList.findOne({name:name,bnetid:bnetid});
 
     if (playerExists) {
     	Session.setPersistent('playeridSession',playerExists._id);
     	var playerSession = Session.get('playeridSession');
 
-      //Update last login and race
-      Meteor.call('updateRace', playerSession, race);
+	    //Update last login and race
+	    Meteor.call('updateRace', playerSession, race);
 
   		Materialize.toast('Existing ID found', 4000);
 
@@ -32,7 +32,7 @@ Template.playerform.events({
 			Meteor.call('insertNewUser', name, bnetid, race, function(err, data) {
 				if (err) {
 			    console.log(err);
-        }
+       			}
 				var playerid = PlayersList.findOne({name:name,bnetid:bnetid});
 
 				//set persistent session of user
@@ -55,6 +55,6 @@ Template.playerform.events({
 Template.playerform.helpers({
 	'player': function(){
 		var playerSession = Session.get('playeridSession');
-    return PlayersList.findOne({_id:playerSession});
+    	return PlayersList.findOne({_id:playerSession});
   }
 });

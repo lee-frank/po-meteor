@@ -15,7 +15,7 @@ Template.playerlist.helpers({
 
 		var race = Session.get('racefilter');
 
-		if (race != "All") {
+		if (race !== "All") {
 			return PlayersList.find({race: race}, {sort: {createdAt: -1}});	
 		} else {
 	      	return PlayersList.find({}, {sort: {createdAt: -1}});	

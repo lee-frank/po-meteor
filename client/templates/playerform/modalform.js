@@ -32,7 +32,7 @@ Template.modalform.events({
         if (err) {
             console.log(err);
         } 
-        Session.clear('playeridSession')
+        Session.clear('playeridSession');
         Materialize.toast('Player card deleted', 4000);
       });
   	}
@@ -47,14 +47,14 @@ Template.modalform.helpers({
     'selectRace': function(race){  //set default selected for race when editing
   		var playerid = Session.get('playeridSession');
   		var player = PlayersList.findOne({_id:playerid});
-  		return playerid && (race == player.race) ? 'selected' : '';
+  		return playerid && (race === player.race) ? 'selected' : '';
     },
     'selectRank': function(rank){  //set default selected for rank when editing
     	var playerid = Session.get('playeridSession');
     	var player = PlayersList.findOne({_id:playerid});
     	
     	//meteor guard (checked playerid exists)
-		  return playerid && (rank == player.rank) ? 'selected' : '';
+		  return playerid && (rank === player.rank) ? 'selected' : '';
     }
 });
 
