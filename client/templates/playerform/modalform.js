@@ -32,7 +32,7 @@ Template.modalform.events({
         if (err) {
             console.log(err);
         } 
-        Session.clear('playeridSession')
+        Session.clear('playeridSession');
         Materialize.toast('Player card deleted', 4000);
       });
   	}
