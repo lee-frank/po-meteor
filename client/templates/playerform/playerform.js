@@ -1,4 +1,6 @@
-Meteor.subscribe('thePlayers');
+Template.playerform.onCreated(function () {
+    this.subscribe('thePlayers');
+});
 
 //initialize jquery plugins
 Template.playerform.onRendered(function() {
