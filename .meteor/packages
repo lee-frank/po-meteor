@@ -21,3 +21,6 @@ fourseven:scss
 poetic:materialize-scss
 u2622:persistent-session
 momentjs:moment
+tmeasday:publish-counts
+reactive-var
+sacha:spin

@@ -1,6 +1,6 @@
-Template.playerform.onCreated(function () {
-    this.subscribe('thePlayers');
-});
+// Template.playerform.onCreated(function () {
+//      this.subscribe('thePlayers');
+// });
 
 //initialize jquery plugins
 Template.playerform.onRendered(function() {
@@ -18,6 +18,7 @@ Template.playerform.events({
     var race = $('[name="race"]').val();
 
     //Find out if it's an existing player
+    
 	var playerExists = PlayersList.findOne({name:name,bnetid:bnetid});
 
     if (playerExists) {
@@ -54,7 +55,7 @@ Template.playerform.events({
 
 //Helpers
 Template.playerform.helpers({
-	'player': function(){
+  'player': function(){
 		var playerSession = Session.get('playeridSession');
     	return PlayersList.findOne({_id:playerSession});
   }

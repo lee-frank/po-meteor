@@ -47,6 +47,17 @@
         </div>
       </div>
     </div>
+    {{#if Template.subscriptionsReady}}
+      {{#if playerCount}}
+          <div class="row">
+            <div class="col s12 center-align">
+              <a class="waves-effect waves-light btn loadmore">Load More</a>
+            </div>
+          </div>
+      {{/if}}
+    {{else}}
+         <div class="loading">{{>spinner}}</div>
+    {{/if}}
   </div>
 </section>
 
