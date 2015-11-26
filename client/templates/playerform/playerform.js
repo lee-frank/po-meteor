@@ -47,7 +47,6 @@ Template.playerform.events({
 				}
 			});
 		}
-		Session.set('getPlayerDataFlag',true);
 	});
 
 	},
@@ -65,22 +64,15 @@ Template.playerform.events({
 Template.playerform.helpers({
   'playerData': function(){
 	var playerSession = Session.get('playeridSession');
-	Session.setDefault('getPlayerDataFlag',true);
+		
+	Meteor.call('findUserById',playerSession, function(err,data) {
+		if (err) {
+	    	console.log(err);
+		} else { 
+			Session.setPersistent('playerData',data);
+		}
+	});
 
-	var getPlayerDataFlag = Session.get('getPlayerDataFlag');
-	
-	if (getPlayerDataFlag) {
-		Meteor.call('findUserById',playerSession, function(err,data) {
-			if (err) {
-		    	console.log(err);
-			} else { 
-				Session.setPersistent('playerData',data);
-				Session.set('getPlayerDataFlag',false);
-				console.log('getPlayerDataFlag ran');
-			}
-		});
-	}
-	
 	return Session.get('playerData');
   },
   'loggedIn': function(){ //check if playeridSession exists (logged in)

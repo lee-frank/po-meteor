@@ -21,8 +21,16 @@ Template.modalform.events({
         if (err) {
             console.log(err);
         } 
-          Session.set('getPlayerDataFlag',true);
           Materialize.toast('Your info has been updated', 4000);
+
+          //playerData is reactive, therefore profile card will update
+          Meteor.call('findUserById',playerid, function(err,data) {
+            if (err) {
+                console.log(err);
+            } else { 
+              Session.setPersistent('playerData',data);
+            }
+          });
       });
   	},
   	'click #delete': function(){
