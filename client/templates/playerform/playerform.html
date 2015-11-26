@@ -1,7 +1,7 @@
 <template name="playerform">
 
-  {{#if player}}
-    {{#with player}}
+  {{#if loggedIn}}
+    {{#with playerData}}
       {{>playercard}}
     {{/with}}
       <a class="btn edit">Edit Info</a>
@@ -51,8 +51,10 @@
   <!-- Modal Structure -->
   <div id="modalEdit" class="modal bottom-sheet">
     <div class="modal-content">
-    {{#if player}}
-      {{>modalform}}
+    {{#if loggedIn}}
+      {{#with playerData}}
+        {{>modalform}}
+      {{/with}}
     {{/if}}
     </div>
   </div>

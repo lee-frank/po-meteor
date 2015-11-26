@@ -21,6 +21,7 @@ Template.modalform.events({
         if (err) {
             console.log(err);
         } 
+          Session.set('getPlayerDataFlag',true);
           Materialize.toast('Your info has been updated', 4000);
       });
   	},
@@ -33,6 +34,7 @@ Template.modalform.events({
             console.log(err);
         } 
         Session.clear('playeridSession');
+        Session.clear('playerData');
         Materialize.toast('Player card deleted', 4000);
       });
   	}
@@ -40,21 +42,13 @@ Template.modalform.events({
 
 //Helpers
 Template.modalform.helpers({
-	 'player': function(){
-  		var playerid = Session.get('playeridSession');
-      return playerid && PlayersList.findOne({_id:playerid});
-    },
     'selectRace': function(race){  //set default selected for race when editing
-  		var playerid = Session.get('playeridSession');
-  		var player = PlayersList.findOne({_id:playerid});
-  		return playerid && (race === player.race) ? 'selected' : '';
+      var playerData = Session.get('playerData');
+  		return (race === playerData.race) ? 'selected' : '';
     },
     'selectRank': function(rank){  //set default selected for rank when editing
-    	var playerid = Session.get('playeridSession');
-    	var player = PlayersList.findOne({_id:playerid});
-    	
-    	//meteor guard (checked playerid exists)
-		  return playerid && (rank === player.rank) ? 'selected' : '';
+    	var playerData = Session.get('playerData');
+		  return (rank === playerData.rank) ? 'selected' : '';
     }
 });
 

@@ -7,16 +7,12 @@ Template.playerlist.onCreated(function() {
 
 	//Part of reactive variable package
 	//Like Sessions, but can be limited in scope ex: template specific
-	instance.loaded = new ReactiveVar(0);
   	instance.limit = new ReactiveVar(5);
-
-  	console.log("instance.loaded:" + instance.loaded);
   	console.log("instance.limit:" + instance.limit);
 
 	// will re-run when the "limit" reactive variables changes
   	instance.autorun(function () {
 	    var limit = instance.limit.get();
-
 	    console.log("Asking for "+limit+" posts…")
 
 	    // subscribe to the 'thePlayers' publication
@@ -25,7 +21,6 @@ Template.playerlist.onCreated(function() {
 	    // if subscription is ready, set limit to newLimit
 	    if (subscription.ready()) {
 	      console.log("> Received "+limit+" posts. \n\n")
-	      instance.loaded.set(limit);
 	    } else {
 	      console.log("> Subscription is not ready yet. \n\n");
 	    }
