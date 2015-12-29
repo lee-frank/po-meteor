@@ -8,7 +8,7 @@ Meteor.publish('presence', function(playerId){
     console.log("Stopping connection to ", playerId);
     Meteor.call('setPresence', playerId, 'offline');
   });
-  
+
   //What is this used for?
   return AuthLog.findOne({ _id: playerId }, { sort: { timestamp: - 1 } });
 })
@@ -25,8 +25,8 @@ Meteor.methods({
       }
     }, function(err, res){
       if (err) return err;
-      AuthLog.insert({ playerId: playerId, status: status, timestamp: new Date() });
+      //AuthLog.insert({ playerId: playerId, status: status, timestamp: new Date() });
     });
   }
-  
+
 });

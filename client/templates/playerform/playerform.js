@@ -21,8 +21,8 @@ Template.playerform.events({
    	//2. If found, set sessionId, updateRace
    	//3. If not found, insertNewUser. Find newUser and set sessionID
  	Meteor.call('findUser',name,bnetid, function(err, data) {
-		if (err) {	
-			console.log(err); 
+		if (err) {
+			console.log(err);
 		}
 
 		var playerExists = data;
@@ -40,7 +40,7 @@ Template.playerform.events({
 				if (err) {
 			    	console.log(err);
        			}
-				else { 
+				else {
 					//set persistent session of user
     				Session.setPersistent('playeridSession', data);
     				Materialize.toast('Player card entered', 4000);
@@ -64,11 +64,11 @@ Template.playerform.events({
 Template.playerform.helpers({
   'playerData': function(){
 	var playerSession = Session.get('playeridSession');
-		
+
 	Meteor.call('findUserById',playerSession, function(err,data) {
 		if (err) {
 	    	console.log(err);
-		} else { 
+		} else {
 			Session.setPersistent('playerData',data);
 		}
 	});
@@ -78,8 +78,8 @@ Template.playerform.helpers({
   'loggedIn': function(){ //check if playeridSession exists (logged in)
   	var playerSession = Session.get('playeridSession');
 
-	if (playerSession) { 
-		return true; 
+	if (playerSession) {
+		return true;
 	}
   }
 });

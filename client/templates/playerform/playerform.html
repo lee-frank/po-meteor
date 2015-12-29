@@ -1,11 +1,10 @@
 <template name="playerform">
-
   {{#if loggedIn}}
-    {{#with playerData}}
-      {{>playercard}}
-    {{/with}}
-      <a class="btn edit">Edit Info</a>
-      <a class="btn logout">Logout</a>
+      {{#with playerData}}
+        {{>playercard}}
+      {{/with}}
+      <a class="edit btn">Edit Info</a>
+      <a class="logout btn">Logout</a>
   {{else}}
     <div class="card grey lighten-3">
       <div class="card-content black-text">

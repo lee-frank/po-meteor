@@ -13,6 +13,7 @@ Meteor.methods({
 	        race: race,
 	        rank: "Unknown Rank",
 	        description: "I'm a fun and honest " + race + " looking for another funny, kind, and honest " + race + " to make sweet Archon Mode magic with.",
+					server: "Unknown Region",
 	        createdAt: new Date(),
 	        loginDate: new Date()
 		});

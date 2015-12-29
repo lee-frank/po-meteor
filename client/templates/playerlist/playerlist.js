@@ -7,7 +7,7 @@ Template.playerlist.onCreated(function() {
 
 	//Part of reactive variable package
 	//Like Sessions, but can be limited in scope ex: template specific
-  	instance.limit = new ReactiveVar(5);
+  	instance.limit = new ReactiveVar(9);
   	console.log("instance.limit:" + instance.limit);
 
 	// will re-run when the "limit" reactive variables changes
@@ -27,7 +27,7 @@ Template.playerlist.onCreated(function() {
     });
 });
 
-Template.playerlist.events({	
+Template.playerlist.events({
 	'click #race-selector li a': function(event){
 		var race = event.currentTarget.id;
 		Session.set('racefilter', race); //sent to findCard helper
@@ -49,15 +49,15 @@ Template.playerlist.helpers({
     	var race = Session.get('racefilter');
 
     	if (race !== "All") {
-    		return PlayersList.find({race: race}, {sort: {createdAt: -1}});	
+    		return PlayersList.find({race: race}, {sort: {loginDate: -1}});
     	} else {
-    		return PlayersList.find({}, {sort: {createdAt: -1}});	
+    		return PlayersList.find({}, {sort: {loginDate: -1}});
     	}
     },
     'playerCount':function(){
     	//publish-counts package
     	//gets the total count for that cursor (number of documents in collection)
-    	var totalPlayers = Counts.get('counter'); 
+    	var totalPlayers = Counts.get('counter');
     	var limit = Template.instance().limit.get();
 
     	console.log("This is the playercount limit:" + limit);
@@ -70,7 +70,3 @@ Template.playerlist.helpers({
      	}
     }
 });
-
-
-
-

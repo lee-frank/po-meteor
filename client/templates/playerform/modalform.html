@@ -2,17 +2,17 @@
 <h4>Update Your Info</h4>
 <form>
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12 m4 l4">
       <input id="name" name="name" type="text" value="{{name}}" required maxlength="12" minlength="3">
       <label class="active" for="name">BNet Username</label>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s12 m4 l4">
       <input id="bnetid" name="bnetid" type="number" value="{{bnetid}}"  max="10000" required>
       <label class="active" for="bnetid">BNet ID #</label>
     </div>
   </div>
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12 m4 l4">
       <label class="active select-label">Your Race</label>
       <select class="browser-default" name="race" required>
         <!--nested #if to prevent non critical console error-->
@@ -23,7 +23,7 @@
         <option value="protoss" {{selectRace 'protoss'}}>Protoss</option>
       </select>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s12 m4 l4">
       <label class="active select-label">Your Highest Rank</label>
       <select class="browser-default" name="rank" required>
         <option value="" disabled>Select Your League</option>
@@ -35,6 +35,17 @@
         <option value="diamond" {{selectRank "diamond"}}>Diamond</option>
         <option value="master" {{selectRank "master"}}>Master</option>
         <option value="grandmaster" {{selectRank "grandmaster"}}>Grandmaster</option>
+      </select>
+    </div>
+    <div class="input-field col s12 m4 l4">
+      <label class="active select-label">Server</label>
+      <select class="browser-default" name="server">
+        <!--nested #if to prevent non critical console error-->
+        <option value="" disabled>Select Server</option>
+        <option value="NA" {{selectServer 'NA'}}>North America</option>
+        <option value="EU" {{selectServer 'EU'}}>Europe</option>
+        <option value="KR" {{selectServer 'KR'}}>Korea</option>
+        <option value="SEA" {{selectServer 'SEA'}}>South-East Asia</option>
       </select>
     </div>
   </div>
